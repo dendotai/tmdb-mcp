@@ -1,0 +1,34 @@
+{
+  "name": "tmdb-mcp",
+  "description": "MCP server for managing TMDB lists, deployed on Cloudflare Workers with an OAuth 2.1 bridge to TMDB v4 auth.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dendotai/tmdb-mcp.git"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "tmdb",
+    "claude",
+    "cloudflare-workers",
+    "oauth"
+  ],
+  "scripts": {
+    "dev": "bunx wrangler dev",
+    "deploy": "bunx wrangler deploy",
+    "types": "bunx wrangler types",
+    "tail": "bunx wrangler tail",
+    "inspector": "bunx @modelcontextprotocol/inspector"
+  },
+  "dependencies": {
+    "@cloudflare/workers-oauth-provider": "^0.4.0",
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "agents": "^0.12.0",
+    "zod": "^4.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0"
+  }
+}

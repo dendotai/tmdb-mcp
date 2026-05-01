@@ -1,0 +1,31 @@
+{
+  "name": "tmdb-mcp",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-04-01",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "MCP_OBJECT",
+        "class_name": "TMDBAgent"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "TMDBAgent"
+      ]
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "OAUTH_KV",
+      // Forking? Create your own with `bunx wrangler kv namespace create OAUTH_KV` and replace this id.
+      "id": "9ccaf9c9bec249f3b50b5d4b7addcfc2"
+    }
+  ]
+}
