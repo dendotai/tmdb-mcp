@@ -162,8 +162,7 @@ export class TMDBAgent extends McpAgent<Env, {}, Props> {
 }
 
 // Bridges TMDB's custom request_token/approve/access_token dance to OAuth 2.1.
-// The OAuthProvider library injects env.OAUTH_PROVIDER with parseAuthRequest
-// and completeAuthorization helpers.
+// The OAuthProvider library injects env.OAUTH_PROVIDER with parseAuthRequest and completeAuthorization helpers.
 const tmdbAuthHandler = {
   async fetch(
     req: Request,
@@ -177,8 +176,7 @@ const tmdbAuthHandler = {
       const oauthReqInfo = await env.OAUTH_PROVIDER.parseAuthRequest(req);
 
       // Get a request_token from TMDB, asking it to redirect back to /callback
-      // We're responsible for round-tripping the request_token ourselves;
-      // TMDB doesn't append it after approval.
+      // We're responsible for round-tripping the request_token ourselves; TMDB doesn't append it after approval.
       const stateKey = crypto.randomUUID();
       const callback = `${url.origin}/callback?state=${stateKey}`;
       const r = await fetch("https://api.themoviedb.org/4/auth/request_token", {
@@ -257,8 +255,7 @@ const tmdbAuthHandler = {
         );
       }
 
-      // Tell the OAuth provider to issue our own bearer to claude.ai,
-      // bound to these props (the actual TMDB token never leaves the Worker)
+      // Tell the OAuth provider to issue our own bearer to claude.ai, bound to these props (the actual TMDB token never leaves the Worker)
       const { redirectTo } = await env.OAUTH_PROVIDER.completeAuthorization({
         request: oauthReqInfo,
         userId: data.account_id,
